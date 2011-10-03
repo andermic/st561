@@ -1,0 +1,137 @@
+\documentclass{article}
+\usepackage[pdftex]{graphicx}
+\usepackage{amsmath}
+\usepackage{verbatim}
+\usepackage{enumerate}
+\author{Michael Anderson}
+\title{Homework 1}
+\begin{document}
+\setlength{\parskip}{1em}
+\maketitle
+\center{ST561}
+\center{Prof. Jiang}\\
+\flushleft
+\newpage
+
+\section{Problem 5}
+Proof by induction:
+
+\begin{itemize}
+\item{\textbf{Base case}.}
+It is given in the hint to this problem that we should start at the $n = 3$
+case, which we already know works:
+\[
+P(A_1 \cup A_2 \cup A_3) = \sum_{i=1}^3 P(A_i) \hspace{6px} - \sum_{i=1, j>i}^3 
+P(A_i \cap A_j) \hspace{6px} + \sum_{i=1, k>j>i}^3 P(A_i \cap A_j \cap A_k) =
+\]
+
+\[
+P(A_1) + P(A_2) + P(A_3) - P(A_1 \cap A_2) - P(A_1 \cap A_3) - P(A_2 \cap A_3)
++ P(A_1 \cap A_2 \cap A_3)
+\]
+
+\vspace{1em}
+
+\item{\textbf{Inductive case}.}
+Want to assume that:
+\[
+P(\cup_{i=1}^n A_i) = \sum_{i=1}^n P(A_i) - \sum_{j>i, i=1}^n
+P(A_i \cap A_j) + \sum_{k>j>i, i=1}^n P(A_i \cap A_j \cap A_k) \cdots
++(-1)^{n-1} P(\cap_{i=1}^n A_i)
+\]
+
+To show that:
+\[
+P(\cup_{i=1}^{n+1} A_i) = \sum_{i=1}^{n+1} P(A_i) - \sum_{j>i, i=1}^{n+1}
+P(A_i \cap A_j) + \sum_{k>j>i, i=1}^{n+1} P(A_i \cap A_j \cap A_k) \cdots
++(-1)^{n} P(\cap_{i=1}^{n+1} A_i)
+\]
+
+Here we must consider how to calculate the probability of the union of $A_{n+1}$
+with the other $n$ sets. If we
+simply add in the probability, then we will be double-counting all of the
+elements in the intersection of $A_{n+1}$ with the other $n$ sets. If we then
+subtract off that
+difference, we will subtract off all of the places in which $A_{n+1}$
+intersects with two other sets twice, which is one time too many. So we must add
+those intersections
+back in, but then we are double-counting all of the places in which $A_{n+1}$
+intersects with three sets. So we must subtract that off... and this pattern
+continues up to $n$. This insight, along with the inductive assumption, gives:
+
+\[
+P(\cup_{i=1}^n A_i) \cup P(A_{n+1})= \sum_{i=1}^n P(A_i) - \sum_{j>i, i=1}^n
+P(A_i \cap A_j) + \sum_{k>j>i, i=1}^n P(A_i \cap A_j \cap A_k) \cdots
++(-1)^{n-1} P(\cap_{i=1}^n A_i)
+\]
+
+\[
++ P(A_{n+1}) - \sum_{i=1}^n P(A_{n+1} \cap A_i) + \sum_{j>i,i=1}^n P(A_{n+1}
+\cap A_i \cap A_j) \cdots +(-1)^{n} P(\cap_{i=1}^{n+1} A_i)
+\]
+
+The two terms on the left side of the equation are easy to combine, and the
+terms on the right side can be combined in pairs by like number of intersections
+to give:
+
+\[
+P(\cup_{i=1}^{n+1} A_i) = \sum_{i=1}^{n+1} P(A_i) - \sum_{j>i, i=1}^{n+1}
+P(A_i \cap A_j) + \sum_{k>j>i, i=1}^{n+1} P(A_i \cap A_j \cap A_k) \cdots
+(-1)^{n} P(\cap_{i=1}^{n+1} A_i)
+\]
+
+\end{itemize}
+
+\section{Problem 6}
+Assume that each of the possible 4 combinations of two children ($BB$, $BG$,
+$GB$, $GG$) are equally likely.
+
+In the case of the man, we are given the information that at least one of
+his children is a boy, or alternatively that he does not have two girls. We have
+then 3 equally likely possibilities remaining ($BG$, $GB$, $BB$), of which only
+one is two boys. So the probability that he has two boys is $\frac{1}{3}$.
+
+In the case of the woman, we are given that her second child is a boy. We have
+then 2 equally likely possibilities remaining ($BB$, $BG$), of which only one
+is two boys. So the probability that she has two boys is $\frac{1}{2}$.
+
+So no, the probabilities are not equal.
+
+\section{Problem 7}
+\begin{enumerate}[(a)]
+\item
+Let:
+
+\vspace{3px}
+
+\begin{tabular}{l l}
+$P(C) = \frac{1}{5}$ & be the probability that a taxpayer cheated \\
+$P(C^C) = \frac{4}{5}$ & be the probability that a taxpayer did not cheat \\
+$P(Y|R) = 1$ & be the probability that a taxpayer said ``Yes" given that
+they rolled red \\
+$P(Y|C) = 1$ & be the probability that a taxpayer said ``Yes" given
+that they cheated \\
+$P(Y|C^C) = \frac{1}{5}$ & be the probability that a taxpayer said ``Yes" given
+that they did not cheat \\
+\end{tabular}
+
+\vspace{1em}
+
+Want to find $P(C|Y)$, the probability that a taxpayer cheated given that they
+said ``Yes". By Bayes' Theorem:
+
+\[
+P(C|Y) = \frac{P(Y|C)P(C)}{P(Y)} = 
+ \frac{P(Y|C)P(C)}{P(Y|C)P(C) + P(Y|C^C)P(C^C)} =
+ \frac{1(1/5)}{1(1/5) + (1/3)(4/5)} = \frac{3}{7} 
+\]
+
+\item
+We get no information from the approximately $120 \times \frac{1}{3} = 40$
+taxpayers who said said ``Yes" automatically because they rolled red. Out of the
+approximately $120 - 40 = 80$ taxpayers who rolled green, $54 - 40 = 14$ said
+``Yes" and therefore cheated. So the estimate is then $14/80$.
+
+\end{enumerate}
+
+\end{document}
