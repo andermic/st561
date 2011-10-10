@@ -1,0 +1,140 @@
+\documentclass{article}
+\usepackage[pdftex]{graphicx}
+\usepackage{amsmath}
+\usepackage{verbatim}
+\usepackage{enumerate}
+\author{Michael Anderson}
+\title{Homework 2}
+\begin{document}
+\setlength{\parskip}{1em}
+\maketitle
+\center{ST561}
+\center{Prof. Jiang}\\
+\flushleft
+\newpage
+
+\section{}
+\begin{enumerate}[(a)]
+\item
+The probability of drawing the first ace is the number of aces in the deck (4)
+divided by the number of cards left in the deck (52). For the second ace, we
+have the number of aces left in the deck divided by the number of cards left in
+the deck (51) ... and so on down to the last ace:
+
+\[
+\frac{4 \times 3 \times 2 \times 1}{52 \times 51 \times 50 \times 49} = 
+\frac{1}{270725}
+\]
+
+\item
+Here the size of the deck decreases as cards are drawn, as in (a), but only one
+card in valid for each draw giving:
+
+\[
+\frac{1^4}{52 \times 51 \times 50 \times 49} = 
+\frac{1}{6497400}
+\]
+
+\item
+For (a), both the number of aces left in the deck and the total number of cards 
+left in the deck does not change after each draw, giving:
+
+\[
+\frac{4 \times 3 \times 2 \times 1}{52^4} = 
+\frac{3}{913952}
+\]
+
+Similarly, (b) with replacement becomes:
+
+\[
+\frac{1^4}{52^4} = 
+\frac{1}{7311616}
+\]
+
+\end{enumerate}
+
+\section{}
+There are 4! ways to permute the 4 different subjects on the shelf.
+Within each subject there are 6!, 4!, 4!, 5! ways to permute the spanish,
+history, geology, and english books, respectively.
+
+\[
+4! \times 6! \times 4! \times 4! \times 5! = 1194393600 
+\]
+
+\section{}
+\begin{enumerate}[(a)]
+\item
+The men could be in 6 groups of contigous seats: 1-5, 2-6, 3-7, 4-8, 5-9, 6-10.
+Within those seats, they could be permuted in 5! ways. $6 \times 5! = 720$.
+
+\item
+The men could be in the odd-numbered seats, and the women in the even-numbered,
+or vice versa. The men could be permuted in their seats in 5!, and so could the
+women. $2 \times 5! \times 5! = 28800$.
+
+\item
+There are 5 couples, which can be permuted in 5! ways. Within each couple, the
+man could sit to the woman's right, or vice versa. $5! \times 2^5 = 3840$. 
+
+\item
+The sample space is the permutation of all 10 attendees, of which we are
+interested in 3840:
+
+\[
+\frac{3840}{10!} = \frac{1}{945}
+\]
+
+\end{enumerate}
+
+\section{}
+\begin{enumerate}[(a)]
+\item
+There are $n$ possible places to put each of the $r$ balls, so the sample space
+is $n^r$. There are $r!$ ways to permute the different balls in the first $r$
+urns, so the probability is $r!/n^r$.
+
+\item
+Since the balls are different, there are $P^n_r$ ways to place $r$ of them
+into their own of $n$ urns. The probability is then $P^n_r/n^r$
+
+\item
+There are ${{r}\choose{m}}$ ways to place the balls in $U_1$, since it is not
+specified that the order that they are placed into $U_1$ is important. Each of
+the remaining $r-m$ balls can be placed into any of the $n-1$ urns, in
+$(n-1)^{r-m}$ ways. So the probability is:
+
+\[
+\frac{{{r}\choose{m}}(n-1)^{r-m}}{n^r}
+\]
+
+\end{enumerate}
+
+\section{}
+\begin{enumerate}[(a)]
+\item
+$P(A)$ is correct, and $P(B)$ is incorrect.
+\item
+\[
+P(B) = \frac{{{13}\choose{2}} {{4}\choose{2}} {{4}\choose{2}} (44)}
+{{{52}\choose{5}}} = 
+\frac{\frac{(13)(12)}{2} {{4}\choose{2}} {{4}\choose{2}} (44)}
+{{{52}\choose{5}}}
+\]
+\item
+For full houses, there are 13 possibilities for the 3-card rank, and 12
+possibilities for the 2-card rank. There are ${{4}\choose{3}}$ ways to select
+suits for the 3-card rank, and ${{4}\choose{2}}$ ways to select suits for the
+two card rank. Finally the sample space is ${{52}\choose{5}}$.
+
+For two pairs, there are ${{13}\choose{2}}$ ways to select 2 ranks from the 13
+available. This is because the order that the ranks for the pairs are
+selected in does not matter, unlike full houses
+where for example $\{JJJ99\} \ne \{999JJ\}$. There are ${{4}\choose{2}}$ ways
+to select suits for one pair, as well as ${{4}\choose{2}}$ ways to select suits
+for the other pair. For the fifth card, there are $52-(4 \times 2) = 44$ cards
+left in the deck that do not have the same rank as either of the pairs. Finally,
+the sample space is again ${{52}\choose{5}}$.
+
+\end{enumerate}
+\end{document}
